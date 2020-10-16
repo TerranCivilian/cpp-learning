@@ -1,6 +1,9 @@
 # cpp-learning
 Experimenting as I read The C++ Programming Language, 4th ed.
 
+This repository is scratch code.
+
+**Contents**
 ch06: Types and Declarations  
 ch07: Pointers, Arrays, and References  
 ch08: Structures, Unions, and Enumerations  
