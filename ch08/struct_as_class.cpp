@@ -10,8 +10,7 @@ struct Test {
 
 int main()
 {
-
-	Test t(2);
+	Test t{2};
 	t.print_i();
 	return 0;
 }

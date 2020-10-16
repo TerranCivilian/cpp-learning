@@ -9,7 +9,7 @@ int main()
 		A* a; // using named type before it's fully defined
 		char c;
 	};
-	A a {};
+	A a {}; // default 0 values
 	A b {1, &a, 'c'};
 	cout << b.i << ' ' << b.a << ' ' << b.c << '\n';
 
@@ -17,7 +17,7 @@ int main()
 	struct D; // declared but not defined
 	// D d;   // error; not fully defined
 	struct E {
-		D* d;
+		D* d;  // can use D even though it's not defined here
 	};
 
 	struct D {
