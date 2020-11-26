@@ -22,7 +22,7 @@ class LessTrivialEx {
 public:
 	LessTrivialEx(const char* str);
 	LessTrivialEx(const LessTrivialEx&);
-	LessTrivialEx& operator=(LessTrivialEx&);
+	LessTrivialEx& operator=(const LessTrivialEx&);
 	~LessTrivialEx();
 	void print() const;
 };
@@ -37,7 +37,7 @@ LessTrivialEx::LessTrivialEx(const LessTrivialEx& t) {
 	strcpy(s, t.s);
 }
 
-LessTrivialEx& LessTrivialEx::operator=(LessTrivialEx& t) {
+LessTrivialEx& LessTrivialEx::operator=(const LessTrivialEx& t) {
 	s = new char[strlen(t.s)+1];
 	strcpy(s, t.s);
 	return *this;
@@ -54,16 +54,17 @@ void LessTrivialEx::print() const {
 int main()
 {
 	TrivialEx t1{13};
-	TrivialEx t2{t1}; // copy constructor invoked
-	t2.print();
-
-	LessTrivialEx t3{"testing123"};
+	TrivialEx t2{14};
+	TrivialEx t3{t1}; // default copy constructor
 	t3.print();
-	LessTrivialEx t4{"another"};
-	t4.print();
-	LessTrivialEx t5{t4};
-	t5.print();
-	LessTrivialEx t6 = t5;
+	t3 = t2; // default copy assignment
+	t3.print();
+
+	LessTrivialEx t4{"testing"};
+	LessTrivialEx t5{"another"};
+	LessTrivialEx t6{t4}; // class defined copy constructor
+	t6.print();
+	t6 = t5; // class defined copy assignment
 	t6.print();
 	return 0;
 }
