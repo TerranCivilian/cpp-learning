@@ -28,17 +28,18 @@ public:
 };
 
 LessTrivialEx::LessTrivialEx(const char* str) {
-	s = new char[strlen(str)];
+	s = new char[strlen(str)+1];
 	strcpy(s, str);
 }
 
 LessTrivialEx::LessTrivialEx(const LessTrivialEx& t) {
-	s = new char[strlen(t.s)];
+	s = new char[strlen(t.s)+1];
 	strcpy(s, t.s);
 }
 
 LessTrivialEx& LessTrivialEx::operator=(LessTrivialEx& t) {
-	s = t.s;
+	s = new char[strlen(t.s)+1];
+	strcpy(s, t.s);
 	return *this;
 }
 
