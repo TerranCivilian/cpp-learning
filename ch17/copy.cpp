@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
@@ -9,30 +10,43 @@ public:
 	// TrivialEx(const TrivialEx&);            // default copy constructor (added by compiler)
 	// TrivialEx& operator=(const TrivialEx&); // default copy assignment (added by compiler)
 	int i() { return ii; }
+	void print() const;
+};
+
+void TrivialEx::print() const {
+	cout << ii << endl;
 }
 
 class LessTrivialEx {
 	char* s;
 public:
 	LessTrivialEx(const char* str);
-	LessTrivialEx(const LessTrivialEx&) const;
-	LessTrivialEx& operator=(const LessTrivailEx&) const;
+	LessTrivialEx(const LessTrivialEx&);
+	LessTrivialEx& operator=(LessTrivialEx&);
+	~LessTrivialEx();
 	void print() const;
-}
+};
 
 LessTrivialEx::LessTrivialEx(const char* str) {
-
+	s = new char[strlen(str)];
+	strcpy(s, str);
 }
 
-LessTrivialEx::LessTrivialEx(const LessTrivialEx&) {
-
+LessTrivialEx::LessTrivialEx(const LessTrivialEx& t) {
+	s = new char[strlen(t.s)];
+	strcpy(s, t.s);
 }
 
-LessTrivialEx::LessTrivialEx& operator=(const LessTrivialEx&) const {
-
+LessTrivialEx& LessTrivialEx::operator=(LessTrivialEx& t) {
+	s = t.s;
+	return *this;
 }
 
-LessTrivialEx::print() const {
+LessTrivialEx::~LessTrivialEx() {
+	delete[] s;
+}
+
+void LessTrivialEx::print() const {
 	cout << s << endl;
 }
 
@@ -40,5 +54,15 @@ int main()
 {
 	TrivialEx t1{13};
 	TrivialEx t2{t1}; // copy constructor invoked
+	t2.print();
+
+	LessTrivialEx t3{"testing123"};
+	t3.print();
+	LessTrivialEx t4{"another"};
+	t4.print();
+	LessTrivialEx t5{t4};
+	t5.print();
+	LessTrivialEx t6 = t5;
+	t6.print();
 	return 0;
 }
