@@ -1,6 +1,5 @@
 CC= g++
 RM= rm -vf
-CFLAGS= -Wall -g
 CPPFLAGS= -Wall -g -std=c++11
 SRCFILES= file1.cpp file2.cpp
 OBJFILES= file1.o file2.o

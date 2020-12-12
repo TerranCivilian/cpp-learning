@@ -1,6 +1,5 @@
 CC= g++
 RM= rm -vf
-CFLAGS= -Wall -g
 CPPFLAGS= -Wall -g -std=c++11
 SRCFILES= $(wildcard *.cpp)
 OBJFILES= $(patsubst %.cpp, %.o, $(SRCFILES))
