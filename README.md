@@ -1,4 +1,4 @@
-# cpp-learning
+# the-cpp-programming-language
 Experimenting as I read The C++ Programming Language, 4th ed.
 
 This repository is scratch code.
